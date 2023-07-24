@@ -3,6 +3,8 @@
 
 #include "vector3d.h"
 #include "sbuffer.h"
+#include <catalog/namespace.h>
+#include <utils/resowner.h>
 
 /* This file contains declarations for spherical point and functions. */
 
@@ -14,6 +16,11 @@ typedef struct
 	float8	lng;	/* longitude value in radians */
 	float8	lat;	/* latitude value in radians */
 } SPoint;
+
+__attribute__((unused))
+static Oid POINT_ID = InvalidOid;
+
+Oid	get_point_id(void);
 
 /*
  * Calculate the distance between two spherical points in radians.

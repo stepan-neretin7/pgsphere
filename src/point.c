@@ -15,6 +15,13 @@ PG_FUNCTION_INFO_V1(spherepoint_z);
 PG_FUNCTION_INFO_V1(spherepoint_xyz);
 PG_FUNCTION_INFO_V1(spherepoint_equal);
 
+Oid	get_point_id(void){
+	if(POINT_ID == InvalidOid){
+		POINT_ID = TypenameGetTypid("spoint");
+	}
+	return POINT_ID;
+}
+
 bool
 spoint_eq(const SPoint *p1, const SPoint *p2)
 {
