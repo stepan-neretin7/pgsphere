@@ -35,6 +35,24 @@ PG_FUNCTION_INFO_V1(spherebox_out);
 PG_FUNCTION_INFO_V1(set_sphere_output_precision);
 PG_FUNCTION_INFO_V1(pg_sphere_version);
 
+static char* create_and_fill_buffer(const char* format, ...)
+{
+	int buffer_length = 0;
+	char *buffer = NULL;
+    va_list args;
+
+    va_start(args, format);
+    buffer_length = vsnprintf(NULL, 0, format, args);
+    va_end(args);
+
+    buffer = palloc(buffer_length + 1);
+    va_start(args, format);
+    vsprintf(buffer, format, args);
+    va_end(args);
+
+    return buffer;
+}
+
  /*
   * Sets the output modus.
   */
@@ -384,8 +402,8 @@ spheretrans_out(PG_FUNCTION_ARGS)
 {
 	SEuler	   *se = (SEuler *) PG_GETARG_POINTER(0);
 	char	   *buffer = (char *) palloc(255);
-	char		buf[100];
 	char		etype[4];
+	char*		buf;
 	SPoint		val[3];
 	unsigned char i,
 				t = 0;
@@ -412,21 +430,26 @@ spheretrans_out(PG_FUNCTION_ARGS)
 		{
 
 			case OUTPUT_DEG:
-				sprintf(&buf[0],
-						"%.*gd",
-						sphere_output_precision, RADIANS * val[i].lng);
+				buf = create_and_fill_buffer(
+					"%.*gd",
+					sphere_output_precision, RADIANS * val[i].lng
+					);
 				break;
 
 			case OUTPUT_HMS:
 			case OUTPUT_DMS:
 				rad_to_dms(val[i].lng, &rdeg, &rmin, &rsec);
-				sprintf(&buf[0],
-						"%2ud %2um %.*gs",
-						rdeg, rmin, sphere_output_precision, rsec);
+				buf = create_and_fill_buffer(
+					"%2ud %2um %.*gs",
+					rdeg, rmin, sphere_output_precision, rsec
+					);
 				break;
 
 			default:
-				sprintf(&buf[0], "%.*g", sphere_output_precision, val[i].lng);
+				buf = create_and_fill_buffer(
+					"%.*g",
+					sphere_output_precision, val[i].lng
+					);
 				break;
 		}
 		strcat(&buf[0], ", ");
@@ -461,7 +484,7 @@ spheretrans_out(PG_FUNCTION_ARGS)
 	}
 	etype[3] = '\0';
 	strcat(buffer, etype);
-
+	pfree(buf);
 	PG_RETURN_CSTRING(buffer);
 }
 

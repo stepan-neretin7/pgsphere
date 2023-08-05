@@ -1,0 +1,65 @@
+2023-08-05 15:58:10.508 +07 postmaster[30721] LOG:  starting PostgreSQL 15.3 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04.1) 11.3.0, 64-bit
+2023-08-05 15:58:10.508 +07 postmaster[30721] LOG:  listening on Unix socket "/tmp/pg_regress-j6K8nj/.s.PGSQL.51699"
+2023-08-05 15:58:10.509 +07 startup[30726] LOG:  database system was shut down at 2023-08-05 15:58:10 +07
+2023-08-05 15:58:10.510 +07 postmaster[30721] LOG:  database system is ready to accept connections
+2023-08-05 15:58:12.126 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca600
+2023-08-05 15:58:12.126 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca628
+2023-08-05 15:58:12.126 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca650
+2023-08-05 15:58:12.127 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca600
+2023-08-05 15:58:12.127 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca628
+2023-08-05 15:58:12.127 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca650
+2023-08-05 15:58:12.127 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca600
+2023-08-05 15:58:12.127 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca628
+2023-08-05 15:58:12.127 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca650
+2023-08-05 15:58:12.128 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca600
+2023-08-05 15:58:12.128 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca628
+2023-08-05 15:58:12.128 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca650
+2023-08-05 15:58:12.128 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca600
+2023-08-05 15:58:12.128 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca628
+2023-08-05 15:58:12.128 +07 client backend[30753] pg_regress/euler WARNING:  problem in alloc set printtup: detected write past chunk end in block 0x56354f2ca4c0, chunk 0x56354f2ca650
+2023-08-05 15:58:12.136 +07 client backend[30759] pg_regress/circle ERROR:  radius must not be greater than 90 degrees or less than 0
+2023-08-05 15:58:12.136 +07 client backend[30759] pg_regress/circle STATEMENT:  SELECT scircle_deg(spoint(10,10), 91);
+2023-08-05 15:58:12.136 +07 client backend[30759] pg_regress/circle ERROR:  radius must not be greater than 90 degrees or less than 0
+2023-08-05 15:58:12.136 +07 client backend[30759] pg_regress/circle STATEMENT:  SELECT scircle_deg(spoint(10,10), -1);
+2023-08-05 15:58:12.187 +07 client backend[30771] pg_regress/poly ERROR:  spherepoly_in: more than two points needed at character 14
+2023-08-05 15:58:12.187 +07 client backend[30771] pg_regress/poly STATEMENT:  SELECT spoly '{(10d,0d),(10d,1d)}';
+2023-08-05 15:58:12.187 +07 client backend[30771] pg_regress/poly ERROR:  spherepoly_deg: invalid number of arguments (must be even and >= 6)
+2023-08-05 15:58:12.187 +07 client backend[30771] pg_regress/poly STATEMENT:  SELECT spoly_deg(ARRAY[1.0, 2.0, 3.0, 4.0, 5.0]);
+2023-08-05 15:58:12.187 +07 client backend[30771] pg_regress/poly ERROR:  spherepoly_deg: invalid number of arguments (must be even and >= 6)
+2023-08-05 15:58:12.187 +07 client backend[30771] pg_regress/poly STATEMENT:  SELECT spoly_deg(ARRAY[]::float8[]);
+2023-08-05 15:58:12.187 +07 client backend[30771] pg_regress/poly ERROR:  spherepoly_from_array: a line segment overlaps or polygon too large at character 14
+2023-08-05 15:58:12.187 +07 client backend[30771] pg_regress/poly STATEMENT:  SELECT spoly '{(0d,0d),(10d,10d),(0d,10d),(10d,0d)}';
+2023-08-05 15:58:12.336 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: detected write past chunk end in block 0x56354f2e9a90, chunk 0x56354f2ea718
+2023-08-05 15:58:12.336 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: req size > alloc size for chunk 0x56354f2eb7a0 in block 0x56354f2e9a90
+2023-08-05 15:58:12.336 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: bad size 0 for chunk 0x56354f2eb7a0 in block 0x56354f2e9a90
+2023-08-05 15:58:12.336 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: bogus aset link in block 0x56354f2e9a90, chunk 0x56354f2eb7a0
+2023-08-05 15:58:12.336 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: bad single-chunk 0x56354f2eb7b8 in block 0x56354f2e9a90
+2023-08-05 15:58:12.336 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: bogus aset link in block 0x56354f2e9a90, chunk 0x56354f2eb7b8
+2023-08-05 15:58:12.336 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: found inconsistent memory block 0x56354f2e9a90
+2023-08-05 15:58:12.336 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: detected write past chunk end in block 0x56354f2e9a90, chunk 0x56354f2ea718
+2023-08-05 15:58:12.336 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: req size > alloc size for chunk 0x56354f2eb7a0 in block 0x56354f2e9a90
+2023-08-05 15:58:12.336 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: bad size 0 for chunk 0x56354f2eb7a0 in block 0x56354f2e9a90
+2023-08-05 15:58:12.336 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: bogus aset link in block 0x56354f2e9a90, chunk 0x56354f2eb7a0
+2023-08-05 15:58:12.336 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: bad single-chunk 0x56354f2eb7b8 in block 0x56354f2e9a90
+2023-08-05 15:58:12.336 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: bogus aset link in block 0x56354f2e9a90, chunk 0x56354f2eb7b8
+2023-08-05 15:58:12.336 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: found inconsistent memory block 0x56354f2e9a90
+2023-08-05 15:58:12.337 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: bad single-chunk 0x56354f2f2750 in block 0x56354f2f1ad0
+2023-08-05 15:58:12.337 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: bogus aset link in block 0x56354f2f1ad0, chunk 0x56354f2f2750
+2023-08-05 15:58:12.337 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: found inconsistent memory block 0x56354f2f1ad0
+2023-08-05 15:58:12.337 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: detected write past chunk end in block 0x56354f2edab0, chunk 0x56354f2ef1c0
+2023-08-05 15:58:12.337 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: bad single-chunk 0x56354f2f2750 in block 0x56354f2f1ad0
+2023-08-05 15:58:12.337 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: bogus aset link in block 0x56354f2f1ad0, chunk 0x56354f2f2750
+2023-08-05 15:58:12.337 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: found inconsistent memory block 0x56354f2f1ad0
+2023-08-05 15:58:12.337 +07 client backend[30795] pg_regress/bounding_box_gist WARNING:  problem in alloc set PortalContext: detected write past chunk end in block 0x56354f2edab0, chunk 0x56354f2ef1c0
+2023-08-05 15:58:12.364 +07 client backend[30807] pg_regress/epochprop ERROR:  NULL position not supported in epoch propagation
+2023-08-05 15:58:12.364 +07 client backend[30807] pg_regress/epochprop STATEMENT:  SELECT epoch_prop(NULL,
+	               23,
+	               0.01 , RADIANS(10362/3.6e6), -110,
+	               120);
+2023-08-05 15:58:12.366 +07 postmaster[30721] LOG:  received fast shutdown request
+2023-08-05 15:58:12.366 +07 postmaster[30721] LOG:  aborting any active transactions
+2023-08-05 15:58:12.366 +07 postmaster[30721] LOG:  background worker "logical replication launcher" (PID 30729) exited with exit code 1
+2023-08-05 15:58:12.366 +07 checkpointer[30724] LOG:  shutting down
+2023-08-05 15:58:12.366 +07 checkpointer[30724] LOG:  checkpoint starting: shutdown immediate
+2023-08-05 15:58:12.371 +07 checkpointer[30724] LOG:  checkpoint complete: wrote 1097 buffers (6.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.005 s, sync=0.001 s, total=0.005 s; sync files=0, longest=0.000 s, average=0.000 s; distance=6177 kB, estimate=6177 kB
+2023-08-05 15:58:12.375 +07 postmaster[30721] LOG:  database system is shut down

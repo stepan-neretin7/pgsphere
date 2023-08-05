@@ -1,0 +1,1 @@
+/home/durachok/.postgres/bin/postgres "-D" "/home/durachok/workspace/pgsphere/tmp_check/data" "-F" "-c" "listen_addresses=" "-k" "/tmp/pg_regress-j6K8nj"
